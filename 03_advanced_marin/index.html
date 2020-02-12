@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Mouse Test</title>
+	<script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<style>
+		#playarea {
+			width: 40rem;
+			height: 30rem;
+			text-align: center;
+			color: white;
+			background-color: cadetblue;
+		}
+		#plane {
+			position: absolute;
+			z-index: 1;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="playarea"><img src="img/airplane.png" id="plane"><div id="coords"></div></div>
+
+	<script>
+		$(document).ready(function() {
+
+			let planeX = '';
+			let planeY = '';
+
+			$( "#playarea" ).mousemove(function( event ) {
+				let currentCoords = '';
+				planeX = event.pageX;
+				planeY = event.pageY;
+				currentCoords = event.pageX + ", " + event.pageY;
+
+				$( "#coords" ).replaceWith( '<div id="coords"><div>' + currentCoords + '</div></div>' );
+				$('#plane').css({ 'left': planeX + 'px', 'top': planeY + 'px' });
+			});
+
+
+			$( "#playarea" ).click(function() {
+				$('#plane').fadeOut(500).fadeIn(500);
+			});
+
+
+		});
+	</script>
+
+</body>
+</html>
