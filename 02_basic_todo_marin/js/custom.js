@@ -1,19 +1,22 @@
 function generateTasks() {
 
+	/* Reset inputs in new task form */
 	$('#tasktext').val('');
 	$('#taskmonth').val('1')
 	$('#taskday').val('1');
 	$('#taskyear').val('');
 
+	/* Set the new task form to hidden */
 	$('#createnewtask').hide();
 
+	/* Reset task list */
 	let taskdate = '';
-
 	$('#mytasks').replaceWith(`<div id="mytasks"></div>`);
 
+	/* Generate todo list from JSON data */
 	for (let i in tododata.tasks) {
 
-			if (tododata.tasks[i].done == 'false') {
+		if (tododata.tasks[i].done == 'false') {
 			taskdate = moment(tododata.tasks[i].due).format('MMM Do');
 
 			$('#mytasks').append(`
